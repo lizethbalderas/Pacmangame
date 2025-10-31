@@ -7,11 +7,12 @@ path = Turtle(visible=False)
 writer = Turtle(visible=False)
 aim = vector(5, 0)
 pacman = vector(-40, -80)
+velocity_ghos = 15
 ghosts = [
-    [vector(-180, 160), vector(10, 0)],
-    [vector(-180, -160), vector(0, 10)],
-    [vector(100, 160), vector(0, -10)],
-    [vector(100, -160), vector(-10, 0)],
+    [vector(-180, 160), vector(velocity_ghos, 0)],
+    [vector(-180, -160), vector(0, velocity_ghos)],
+    [vector(100, 160), vector(0, -velocity_ghos)],
+    [vector(100, -160), vector(-velocity_ghos,0)],
 ]
 tiles = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -116,12 +117,21 @@ def move():
             point.move(course)
         else:
             options = [
-                vector(10, 0),
-                vector(-10, 0),
-                vector(0, 10),
-                vector(0, -10),
-            ]
-            plan = choice(options)
+            vector(velocity_ghos, 0),
+            vector(-velocity_ghos, 0),
+            vector(0, velocity_ghos),
+            vector(0, -velocity_ghos),
+        ]
+        
+        # Filtramos solo las direcciones válidas (sin chocar con paredes)
+        options = [v for v in options if valid(point + v)]
+        
+        # Si hay opciones, elegimos la que más acerque al pacman
+        if options:
+            plan = min(options, key=lambda v: abs((point + v) - pacman))
+            course.x, course.y = plan.x, plan.y
+
+
             course.x = plan.x
             course.y = plan.y
 
