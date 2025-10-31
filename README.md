@@ -9,12 +9,12 @@ Cada fantasma se desplaza por el tablero según un algoritmo de movimiento mejor
 
 ## Contenido del Repositorio
 
-- **pacman.py** → Código principal del juego.  
+- **pacman.py** → Código principal del juego. 👻
   Contiene la lógica para el movimiento de Pacman, el comportamiento de los fantasmas, el dibujo del tablero y el sistema de puntuación.
 
 ---
 
-## Controles del Juego
+## Controles del Juego 🧩
 
 | Tecla | Acción            |
 |:------|:------------------|
@@ -25,7 +25,7 @@ Cada fantasma se desplaza por el tablero según un algoritmo de movimiento mejor
 
 ---
 
-## Cambios Realizados
+## Cambios Realizados 🛠️
 
 Se realizaron las siguientes modificaciones al código original del juego **Pacman (FreeGames)**:
 
